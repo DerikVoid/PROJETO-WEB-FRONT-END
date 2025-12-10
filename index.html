@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PsicoLink - Início</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <!-- botão menu sempre visível, sem "quadrado" estranho -->
+    <button id="menuBtn" class="menu-btn" aria-label="Abrir menu">☰</button>
+
+    <div class="brand">
+      <h1>PSICOLINK</h1>
+      <small>Conectando mentes.</small>
+    </div>
+
+    <!-- logo: se não existir a imagem, onerror oculta -->
+    <img src="Logo (2).png" alt="Logo PsicoLink" class="logo-img"
+         onerror="this.style.display='none'">
+  </header>
+
+  <!-- overlay só é inserido/ativado via JS quando menu abre -->
+  <div id="menuOverlay" class="menu-overlay" hidden></div>
+
+  <!-- menu lateral (escondido por padrão) -->
+  <nav id="sideMenu" class="side-menu" aria-hidden="true">
+    <button id="closeMenu" class="close-menu" aria-label="Fechar menu">← Voltar</button>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="contato.html">Contato</a></li>
+      <li><button id="darkModeBtn" class="link-btn">Modo Light/Dark</button></li>
+      <li class="soon">SOON</li>
+      <li class="soon">SOON</li>
+    </ul>
+  </nav>
+
+  <main class="page-main" id="pageMain">
+    <section class="hero">
+      <h2>Bem-vindo</h2>
+      <p>Sistema de gerenciamento para clínicas de psicologia.</p>
+
+      <!-- carrossel horizontal -->
+      <div class="carousel-wrap">
+        <div class="carousel" id="carousel">
+          <figure class="card"><img src="Imagens (1).jpeg" alt="Imagem 1"><figcaption>Imagem 1</figcaption></figure>
+          <figure class="card"><img src="Imagens (4).jpeg" alt="Imagem 2"><figcaption>Imagem 2</figcaption></figure>
+          <figure class="card"><img src="Imagens (3).jpeg" alt="Imagem 3"><figcaption>Imagem 3</figcaption></figure>
+        </div>
+      </div>
+
+      <!-- seta única inferior que avança PARA A DIREITA -->
+      <div class="carousel-control">
+        <button id="nextBtn" class="next-btn" aria-label="Próxima imagem">➜</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© PsicoLink</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

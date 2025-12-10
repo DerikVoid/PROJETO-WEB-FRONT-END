@@ -1,0 +1,117 @@
+:root{
+  --menu-w: 260px;
+  --bg: #e8f7e8;
+  --header: #d7f5d7;
+  --accent: #2fa24a;
+  --card-border: #2da84b;
+  --dark-bg: #08120b;
+  --dark-text: #e6f9e6;
+}
+
+/* reset básico */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:#0f2417;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s, color .25s;
+}
+
+/* --- header --- */
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--header);
+  padding:10px 18px;
+  border-bottom:3px solid var(--accent);
+  position:relative;
+  z-index:10; /* header acima do conteúdo, mas abaixo do menu/overlay */
+}
+
+.menu-btn{
+  width:44px;height:44px;border-radius:8px;font-size:22px;
+  background:white;border:2px solid var(--accent);
+  display:inline-grid;place-items:center;cursor:pointer;
+}
+
+/* central logo */
+.brand{text-align:center}
+.brand h1{letter-spacing:2px;font-size:20px}
+.brand small{font-size:11px;color:rgba(0,0,0,0.45)}
+.logo-img{width:70px;height:70px;object-fit:contain}
+
+/* --- overlay --- */
+.menu-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.5);
+  z-index:100;opacity:0;transition:opacity .22s;
+}
+/* hidden => não ocupa/não é clicável */
+.menu-overlay[hidden]{display:none;opacity:0}
+
+/* --- side menu --- */
+.side-menu{
+  position:fixed;
+  top:0;
+  left:calc(-1 * var(--menu-w));
+  width:var(--menu-w);
+  height:100vh;
+  background:#fff;
+  padding:18px;
+  box-shadow:4px 0 30px rgba(0,0,0,0.18);
+  transition:left .32s ease;
+  z-index:110; /* menu acima de overlay (overlay fecha) */
+  border-right:3px solid var(--accent);
+  overflow:auto;
+}
+.side-menu.open{ left:0; }
+.side-menu[aria-hidden="true"]{ left:calc(-1 * var(--menu-w)); }
+
+.close-menu{
+  background:var(--header);border:0;padding:8px 10px;border-radius:6px;cursor:pointer;margin-bottom:8px;
+}
+.side-menu ul{list-style:none;margin-top:6px}
+.side-menu li{padding:10px 0}
+.side-menu a{color:inherit;text-decoration:none;font-weight:700}
+.link-btn{background:none;border:0;cursor:pointer}
+
+/* --- main / carrossel --- */
+.page-main{min-height:60vh;padding:28px 18px;z-index:1;position:relative}
+.hero h2{font-size:30px;margin-bottom:6px}
+.hero p{margin-bottom:18px;color:rgba(0,0,0,0.65)}
+
+.carousel-wrap{width:100%;max-width:1100px;margin:0 auto;overflow:hidden;border-radius:12px;padding:10px}
+.carousel{display:flex;gap:18px;transition:transform .45s cubic-bezier(.22,.9,.3,1);align-items:center}
+.card{flex:0 0 80%;max-width:80%;display:flex;flex-direction:column;align-items:center}
+.card img{width:100%;height:420px;object-fit:cover;border-radius:8px;border:6px solid var(--card-border)}
+.card figcaption{margin-top:8px;color:#f5fff5;background:transparent;text-align:center;padding:6px 12px;border-radius:8px}
+
+/* seta inferior */
+.carousel-control{text-align:center;margin-top:18px}
+.next-btn{width:64px;height:64px;border-radius:999px;background:var(--accent);color:white;border:0;font-size:28px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.18)}
+
+/* footer */
+.site-footer{margin-top:40px;padding:18px;background:var(--header);border-top:3px solid var(--accent);text-align:center;color:rgba(0,0,0,0.6)}
+
+/* --- dark mode (aplica body.dark) --- */
+body.dark{
+  background:var(--dark-bg);color:var(--dark-text);
+}
+body.dark .site-header{background:#122017;border-bottom-color:#2f8b50}
+body.dark .side-menu{background:#07110b;color:var(--dark-text)}
+body.dark .card img{border-color:#4aa36a}
+body.dark .site-footer{background:#122017;color:rgba(255,255,255,0.55)}
+
+/* --- responsive tweaks --- */
+@media (max-width:900px){
+  .card{flex:0 0 90%;max-width:90%}
+  .card img{height:300px}
+  .menu-btn{width:40px;height:40px}
+}
+@media (max-width:520px){
+  .brand h1{font-size:16px}
+  .card img{height:220px}
+  .next-btn{width:54px;height:54px}
+}
